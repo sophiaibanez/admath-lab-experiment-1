@@ -7,9 +7,9 @@ x3=0;
 k=0;
 
 % INITILIAZE ERROR %
-x1e = inf;
-x2e = inf;
-x3e = inf;
+err1 = inf;
+err2 = inf;
+err3 = inf;
 
 % SET-UP %
 
@@ -22,15 +22,15 @@ elseif (abs(A(1,2))+abs(A(1,3))>abs(A(1,1)) || abs((A(2,1))+abs(A(2,3)))>abs(A(2
     error('The given matrix is not diagonally dominant')
 
 else    
-while (x1e > epsilon) && (x2e > epsilon) && (x3e > epsilon)
+while (err1 > epsilon) && (err2 > epsilon) && (err3 > epsilon)
     
 x1k=1/A(1,1)*(b(1)-A(1,2)*x2-A(1,3)*x3);
 x2k=1/A(2,2)*(b(2)-A(2,1)*x1-A(2,3)*x3);
 x3k=1/A(3,3)*(b(3)-A(3,1)*x1-A(3,2)*x2);
 
-x1e = abs(x1k-x1);
-x2e = abs(x2k-x2);
-x3e = abs(x3k-x3);
+err1 = abs(x1k-x1);
+err2 = abs(x2k-x2);
+err3 = abs(x3k-x3);
 
 x1 = x1k;
 x2 = x2k;
