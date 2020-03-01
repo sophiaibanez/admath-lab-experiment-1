@@ -1,15 +1,23 @@
 function [x,k]=Jacobi(A,b,epsilon)
+
+% INITIALIZE VALUES %
 x1=0;
 x2=0;
 x3=0;
 k=0;
+
+% INITILIAZE ERROR %
 x1e = inf;
 x2e = inf;
 x3e = inf;
 
+% SET-UP %
+
+% must be 3x3 matrix
 if size(A) ~= 3
-    error('The given matrix is not 3 by 3')
-    
+    error('Matrix is not 3 by 3')
+
+% must be diagonally dominant
 elseif (abs(A(1,2))+abs(A(1,3))>abs(A(1,1)) || abs((A(2,1))+abs(A(2,3)))>abs(A(2,2)) || abs((A(3,1))+abs(A(3,2)))>abs(A(3,3)))
     error('The given matrix is not diagonally dominant')
 
