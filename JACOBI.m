@@ -41,3 +41,34 @@ x=[x1,x2,x3];
 end
 end
 end
+
+function [x,k] = Jacobi(A,b,epsilon)
+
+
+% INITIALIZE VALUES
+x = zeros(size(b,1),1);
+err = inf;
+k = 0;
+
+% SET-UP
+if all((2*abs(diag(A))) < sum(abs(A),2) % must be diagonally dominant first
+    error('Matrix is not diagonally dominant')
+
+else
+while err > epsilon
+    
+    
+    D = diag(diag(A));
+    R = A - D
+
+    x = D\(b-R*x);
+    err = norm(x-x,inf)/norm(x);
+    k = k+1;
+    x = x;
+   
+end
+
+end
+
+disp(x)
+disp(k)
